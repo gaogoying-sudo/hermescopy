@@ -68,7 +68,7 @@
     {
       "id": "7ddbb339c160",
       "name": "hermescopy-auto-backup",
-      "prompt": "Run the hermescopy backup script to save Hermes configuration to GitHub.\n\nSteps:\n1. cd ~/Projects/hermescopy\n2. Run: echo \"y\" | ./hermescopy-backup.sh\n3. Report the result: success/failure, what was backed up, any warnings\n\nThis is an automated weekly backup. Do not ask questions.",
+      "prompt": "Run the hermescopy backup script to save Hermes configuration to GitHub.\n\nSteps:\n1. cd ~/Projects/hermescopy\n2. Run: echo \"y\" | ./hermescopy-backup.sh\n3. If push fails due to git URL pollution, fix it: sed -i '' 's|git@github.com:gaogoying-sudo -S -p .*/|https://github.com/gaogoying-sudo/|' .git/config\n4. Report the result: success/failure, what was backed up, any warnings\n\nThis is an automated daily backup. Do not ask questions.",
       "skills": [],
       "skill": null,
       "model": "qwen3.5-plus",
@@ -77,10 +77,10 @@
       "script": null,
       "schedule": {
         "kind": "cron",
-        "expr": "0 9 * * 1",
-        "display": "0 9 * * 1"
+        "expr": "0 0 * * *",
+        "display": "0 0 * * *"
       },
-      "schedule_display": "0 9 * * 1",
+      "schedule_display": "0 0 * * *",
       "repeat": {
         "times": null,
         "completed": 0
@@ -90,7 +90,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-22T21:14:58.359674+08:00",
-      "next_run_at": "2026-04-27T09:00:00+08:00",
+      "next_run_at": "2026-04-24T00:00:00+08:00",
       "last_run_at": null,
       "last_status": null,
       "last_error": null,
@@ -98,5 +98,5 @@
       "origin": null
     }
   ],
-  "updated_at": "2026-04-22T21:19:34.646174+08:00"
+  "updated_at": "2026-04-23T00:00:34.559217+08:00"
 }

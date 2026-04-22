@@ -594,6 +594,106 @@ for f in sessions_dir.glob('*.json'):
 - System prompt contains role identity keywords — use for profile inference
 - Skip sessions with no user/assistant messages (system-only sessions)
 
+### Conversation Consolidation (Deduplication & Topic Grouping)
+
+**Problem:** Hermes creates a new session file for every conversation restart, leading to 100+ fragmented conversations with the same topic (e.g., 23x "小厨上线", 14x "大管家出来").
+
+**Solution: Topic-based grouping + message deduplication**
+
+```python
+from collections import Counter, defaultdict
+
+# Step 1: Group by topic (first 15 chars of first user message, normalized)
+topic_groups = defaultdict(list)
+for f in conv_dir.glob('*.json'):
+    data = json.loads(f.read_text())
+    msgs = data.get('messages', [])
+    user_msgs = [m for m in msgs if m['role'] == 'user']
+    if user_msgs:
+        first = user_msgs[0]['content']
+        # Normalize to topic key
+        if '小厨' in first and '上线' in first:
+            topic = '小厨上线'
+        elif '大管家' in first:
+            topic = '大管家'
+        elif '飞书' in first or 'openclaw' in first.lower():
+            topic = '飞书集成'
+        # ... more patterns ...
+        else:
+            topic = first[:15]
+        topic_groups[topic].append(data)
+
+# Step 2: Merge each group (deduplicate by content hash)
+for topic, convs in topic_groups.items():
+    convs.sort(key=lambda x: x.get('created_at', ''))
+    all_msgs = []
+    seen = set()
+    for c in convs:
+        for m in c.get('messages', []):
+            content_hash = hash(m.get('content', '')[:50] + m.get('role', ''))
+            if content_hash not in seen:
+                seen.add(content_hash)
+                all_msgs.append(m)
+    
+    # Save merged conversation
+    merged = {
+        'id': f'merged_{topic.replace(" ", "_")}',
+        'name': user_msgs[0]['content'][:30] + '...',
+        'profile': convs[0].get('profile', ''),
+        'messages': all_msgs,
+        'last_message': all_msgs[-1]['content'][:200],
+        'created_at': convs[0].get('created_at', ''),
+        'updated_at': convs[-1].get('updated_at', ''),
+    }
+    (conv_dir / f'merged_{topic.replace(" ", "_")}.json').write_text(json.dumps(merged, ensure_ascii=False, indent=2))
+```
+
+**Result:** 132 fragmented → 29 consolidated conversations (78% reduction).
+
+### Extracting Feishu Conversations from Gateway Logs
+
+**Critical:** Hermes Gateway processes Feishu messages in real-time and does NOT persist them as session files. To recover Feishu conversations, parse the gateway log.
+
+```python
+import re
+from pathlib import Path
+from collections import defaultdict
+
+gateway_log = Path.home() / '.hermes' / 'logs' / 'gateway.log'
+log_content = gateway_log.read_text()
+
+# Parse inbound messages and responses
+chat_groups = defaultdict(list)
+for line in log_content.split('\n'):
+    # Inbound: "inbound message: platform=feishu user=XXX chat=XXX msg='...'"
+    inbound = re.search(r'inbound message: platform=feishu user=(\S+) chat=(\S+) msg=\'(.+?)\'', line)
+    if inbound:
+        chat_groups[inbound.group(2)].append({'role': 'user', 'content': inbound.group(3)})
+    
+    # Response: "response ready: platform=feishu chat=XXX time=XXXs api_calls=XXX response=XXX chars"
+    response = re.search(r'response ready: platform=feishu chat=(\S+) time=(\S+)s api_calls=(\d+) response=(\d+) chars', line)
+    if response:
+        chat_groups[response.group(1)].append({
+            'role': 'assistant',
+            'content': f'[Response: {response.group(4)} chars, {response.group(3)} API calls, {response.group(2)}s]'
+        })
+
+# Create conversation for each Feishu chat
+for chat_id, msgs in chat_groups.items():
+    conv_data = {
+        'id': f'feishu_{chat_id}',
+        'name': f'飞书: {msgs[0]["content"][:30]}...',
+        'profile': 'xiaochu',
+        'messages': msgs,
+        'last_message': msgs[-1]['content'][:200],
+        'created_at': '',
+        'updated_at': '',
+    }
+    (conv_dir / f'feishu_{chat_id}.json').write_text(json.dumps(conv_data, ensure_ascii=False, indent=2))
+```
+
+**Note:** Gateway logs only contain message text and response metadata, NOT the full agent response content. Feishu conversations in the dashboard will show `[Response: 436 chars, 1 API calls, 17.4s]` as the assistant message, not the actual response text.
+
 ### macOS Auto-Start (LaunchAgent)
 
 ### LaunchAgent plist (`~/Library/LaunchAgents/com.hermes.dashboard.plist`)

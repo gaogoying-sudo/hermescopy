@@ -1,6 +1,6 @@
 # 自启动服务清单
 
-> 备份时间：2026-04-22 21:22:06
+> 备份时间：2026-04-23 00:00:46
 
 ## Launchd 服务
 
@@ -15,6 +15,7 @@
 - `ai.openclaw.server-watchdog` → unknown
 - `ai.openclaw.tunnel-monitor` → unknown
 - `com.hermes.dashboard` → unknown
+- `unknown` → unknown
 - `com.mac.gpbot` → unknown
 - `com.mac.larkws` → unknown
 - `homebrew.mxcl.mysql` → unknown

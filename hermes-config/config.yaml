@@ -1,29 +1,20 @@
 model:
-  default: qwen3.5-plus
+  default: glm-5
   provider: alibaba
   base_url: https://coding.dashscope.aliyuncs.com/v1
 providers: {}
-platforms:
-  feishu:
-    enabled: true
-    extra:
-      app_id: cli_a92b81d03838dbb3
-      app_secret: "<YOUR_KEY_HERE>"
-      domain: feishu
-      connection_mode: websocket
-
 fallback_providers:
-  - alibaba        # 主 Provider
-  - openrouter     # 备用 Provider
+- alibaba
+- openrouter
 credential_pool_strategies:
   alibaba:
     strategy: round_robin
     keys:
-      - DASHSCOPE_API_KEY: "<YOUR_KEY_HERE>"
+    - DASHSCOPE_API_KEY: "<YOUR_KEY_HERE>"
   openrouter:
     strategy: round_robin
     keys:
-      - OPENROUTER_API_KEY: "<YOUR_KEY_HERE>"
+    - OPENROUTER_API_KEY: "<YOUR_KEY_HERE>"
 toolsets:
 - all
 agent:
@@ -278,6 +269,14 @@ logging:
   max_size_mb: 5
   backup_count: 3
 _config_version: 7
+platforms:
+  feishu:
+    enabled: true
+    extra:
+      app_id: cli_a92b81d03838dbb3
+      app_secret: "<YOUR_KEY_HERE>"
+      domain: feishu
+      connection_mode: websocket
 session_reset:
   mode: both
   idle_minutes: 120

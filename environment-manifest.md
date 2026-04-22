@@ -3,7 +3,7 @@
 > 自动生成，记录所有依赖和版本，确保可重现
 
 ## 系统信息
-- **备份时间**：2026-04-22 21:22:07
+- **备份时间**：2026-04-23 00:00:46
 - **操作系统**：macOS 26.0
 - **架构**：arm64
 - **Shell**：/bin/zsh
@@ -79,10 +79,12 @@ jpeg-turbo
 ## 项目目录
 ```
 📁 AI-PM
+📁 CLM Project (main)
+📁 OpenViking (main)
+📁 PPT - HTML USE
 📁 andrej-karpathy-skills (main)
 📁 auto agent
 📁 claude-code-fork-main
-📁 CLM Project (main)
 📁 clm-tools-kw (main)
 📁 english-learning-studio (main)
 📁 evoagentx
@@ -92,8 +94,7 @@ jpeg-turbo
 📁 hermes-dashboard
 📁 hermescopy (main)
 📁 mac-voice-transcriber
-📁 OpenViking (main)
-📁 PPT - HTML USE
+📁 markitdown (main)
 📁 rz
 📁 userclaw
 📁 wenbo-agent
@@ -118,6 +119,7 @@ jpeg-turbo
 - ai.openclaw.server-watchdog
 - ai.openclaw.tunnel-monitor
 - com.hermes.dashboard
+- com.hermes.heremescopy-backup-on-boot.plist
 - com.mac.gpbot
 - com.mac.larkws
 - homebrew.mxcl.mysql
