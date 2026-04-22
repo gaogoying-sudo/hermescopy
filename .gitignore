@@ -1,0 +1,74 @@
+# ═══════════════════════════════════════════════════════════
+# hermescopy - .gitignore
+# 排除敏感文件和临时文件
+# ═══════════════════════════════════════════════════════════
+
+# ─── 敏感信息（绝不上传）────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+auth.json
+auth.json.*
+credentials.json
+secrets.json
+
+# ─── 数据库和会话数据───────────────────────────────────────
+*.db
+*.db-wal
+*.db-shm
+state.db
+state.db-*
+sessions/
+*.jsonl
+!audit.jsonl.example
+
+# ─── 日志文件──────────────────────────────────────────────
+logs/
+*.log
+!logs/.gitkeep
+
+# ─── 缓存和临时文件───────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+node_modules/
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# ─── IDE 和编辑器──────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# ─── 备份文件─────────────────────────────────────────────
+*.backup
+*.bak
+*.old
+*.backup.*
+
+# ─── 压缩包───────────────────────────────────────────────
+*.tar.gz
+*.zip
+*.tar
+
+# ─── 其他─────────────────────────────────────────────────
+Thumbs.db
+*.tmp
+*.temp
+.fseventsd

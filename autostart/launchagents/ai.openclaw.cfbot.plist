@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>ai.openclaw.cfbot</string>
+    
+    <key>Comment</key>
+    <string>OpenClaw Gateway (profile: cfbot, v2026.3.2)</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>1</integer>
+    <key>Umask</key>
+    <integer>63</integer>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/opt/homebrew/opt/node/bin/node</string>
+      <string>/opt/homebrew/lib/node_modules/openclaw/dist/index.js</string>
+      <string>gateway</string>
+      <string>--port</string>
+      <string>18889</string>
+    </array>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/mac/.openclaw-cfbot/logs/gateway.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/mac/.openclaw-cfbot/logs/gateway.err.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+    <key>HOME</key>
+    <string>/Users/mac</string>
+    <key>TMPDIR</key>
+    <string>/var/folders/dj/5ys2x1l92w3931sl2qqtgkzw0000gn/T/</string>
+    <key>PATH</key>
+    <string>/Users/mac/.local/bin:/Users/mac/.npm-global/bin:/Users/mac/bin:/Users/mac/.volta/bin:/Users/mac/.asdf/shims:/Users/mac/.bun/bin:/Users/mac/Library/Application Support/fnm/aliases/default/bin:/Users/mac/.fnm/aliases/default/bin:/Users/mac/Library/pnpm:/Users/mac/.local/share/pnpm:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>NODE_EXTRA_CA_CERTS</key>
+    <string>/etc/ssl/cert.pem</string>
+    <key>NODE_USE_SYSTEM_CA</key>
+    <string>1</string>
+    <key>OPENCLAW_STATE_DIR</key>
+    <string>/Users/mac/.openclaw-cfbot</string>
+    <key>OPENCLAW_CONFIG_PATH</key>
+    <string>/Users/mac/.openclaw-cfbot/openclaw.json</string>
+    <key>OPENCLAW_PROFILE</key>
+    <string>cfbot</string>
+    <key>OPENCLAW_GATEWAY_PORT</key>
+    <string>18889</string>
+    <key>OPENCLAW_GATEWAY_TOKEN</key>
+    <string>eaee5953139c65306b3b37deb9ac8327f6d0f7f1d181815d</string>
+    <key>OPENCLAW_LAUNCHD_LABEL</key>
+    <string>ai.openclaw.cfbot</string>
+    <key>OPENCLAW_SYSTEMD_UNIT</key>
+    <string>openclaw-gateway-cfbot.service</string>
+    <key>OPENCLAW_SERVICE_MARKER</key>
+    <string>openclaw</string>
+    <key>OPENCLAW_SERVICE_KIND</key>
+    <string>gateway</string>
+    <key>OPENCLAW_SERVICE_VERSION</key>
+    <string>2026.3.2</string>
+    </dict>
+  </dict>
+</plist>

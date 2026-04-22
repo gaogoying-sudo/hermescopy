@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>ai.openclaw.cloudflared-monitor</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/opt/cloudflared/bin/cloudflared</string>
+        <string>tunnel</string>
+        <string>--url</string>
+        <string>http://localhost:3456</string>
+    </array>
+    
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <key>KeepAlive</key>
+    <true/>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/mac/.openclaw/logs/cloudflared-monitor.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/mac/.openclaw/logs/cloudflared-monitor.err</string>
+    
+    <key>WorkingDirectory</key>
+    <string>/Users/mac/.openclaw/workspace</string>
+</dict>
+</plist>

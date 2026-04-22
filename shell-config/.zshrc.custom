@@ -1,0 +1,25 @@
+# ═══════════════════════════════════════════════════════════
+# zshrc 自定义配置 - hermescopy
+# 恢复时追加到 ~/.zshrc
+# ═══════════════════════════════════════════════════════════
+
+# Homebrew
+export PATH="/opt/homebrew/bin:$PATH"
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
+# 开发工具路径
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$PATH"
+
+# Java
+export JAVA_HOME="/opt/homebrew/opt/openjdk"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# API 密钥（恢复后需手动填入）
+# export DASHSCOPE_API_KEY="your_key_here"
+# export OPENROUTER_API_KEY="your_key_here"
+# export OPENROUTER_KEY="your_key_here"

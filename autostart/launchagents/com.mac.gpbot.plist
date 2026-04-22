@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.mac.gpbot</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/mac/gpbot/.venv/bin/python</string>
+      <string>/Users/mac/gpbot/lark_ws_gp.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/mac/gpbot</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/mac/gpbot/logs/gpbot.out.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/mac/gpbot/logs/gpbot.err.log</string>
+  </dict>
+</plist>

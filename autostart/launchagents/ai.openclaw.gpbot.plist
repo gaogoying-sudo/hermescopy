@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>ai.openclaw.gpbot</string>
+    
+    <key>Comment</key>
+    <string>OpenClaw Gateway (profile: gpbot, v2026.3.8)</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>1</integer>
+    <key>Umask</key>
+    <integer>63</integer>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/opt/homebrew/opt/node/bin/node</string>
+      <string>/opt/homebrew/lib/node_modules/openclaw/dist/index.js</string>
+      <string>gateway</string>
+      <string>--port</string>
+      <string>18989</string>
+    </array>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/mac/.openclaw-gpbot/logs/gateway.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/mac/.openclaw-gpbot/logs/gateway.err.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+    <key>HOME</key>
+    <string>/Users/mac</string>
+    <key>TMPDIR</key>
+    <string>/var/folders/dj/5ys2x1l92w3931sl2qqtgkzw0000gn/T/</string>
+    <key>NODE_EXTRA_CA_CERTS</key>
+    <string>/etc/ssl/cert.pem</string>
+    <key>NODE_USE_SYSTEM_CA</key>
+    <string>1</string>
+    <key>OPENCLAW_STATE_DIR</key>
+    <string>/Users/mac/.openclaw-gpbot</string>
+    <key>OPENCLAW_CONFIG_PATH</key>
+    <string>/Users/mac/.openclaw-gpbot/openclaw.json</string>
+    <key>PATH</key>
+    <string>/Users/mac/.local/bin:/Users/mac/.npm-global/bin:/Users/mac/bin:/Users/mac/.volta/bin:/Users/mac/.asdf/shims:/Users/mac/.bun/bin:/Users/mac/Library/Application Support/fnm/aliases/default/bin:/Users/mac/.fnm/aliases/default/bin:/Users/mac/Library/pnpm:/Users/mac/.local/share/pnpm:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>OPENCLAW_PROFILE</key>
+    <string>gpbot</string>
+    <key>OPENCLAW_GATEWAY_PORT</key>
+    <string>18989</string>
+    <key>OPENCLAW_LAUNCHD_LABEL</key>
+    <string>ai.openclaw.gpbot</string>
+    <key>OPENCLAW_SYSTEMD_UNIT</key>
+    <string>openclaw-gateway-gpbot.service</string>
+    <key>OPENCLAW_WINDOWS_TASK_NAME</key>
+    <string>OpenClaw Gateway (gpbot)</string>
+    <key>OPENCLAW_SERVICE_MARKER</key>
+    <string>openclaw</string>
+    <key>OPENCLAW_SERVICE_KIND</key>
+    <string>gateway</string>
+    <key>OPENCLAW_SERVICE_VERSION</key>
+    <string>2026.3.8</string>
+    </dict>
+  </dict>
+</plist>

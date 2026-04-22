@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.hermes.dashboard</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/mac/Projects/hermes-dashboard/start-dashboard.sh</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>WorkingDirectory</key>
+    <string>/Users/mac/Projects/hermes-dashboard</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/hermes-dashboard-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/hermes-dashboard-stderr.log</string>
+</dict>
+</plist>

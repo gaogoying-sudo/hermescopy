@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>ai.openclaw.recipe-server</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/npx</string>
+        <string>http-server</string>
+        <string>-p</string>
+        <string>9090</string>
+    </array>
+    
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <key>KeepAlive</key>
+    <true/>
+    
+    <key>WorkingDirectory</key>
+    <string>/Users/mac/.openclaw/workspace/recipe-visualizer</string>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/mac/.openclaw/logs/recipe-server.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/mac/.openclaw/logs/recipe-server.err</string>
+</dict>
+</plist>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.mac.larkws</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/mac/stuse/.venv/bin/python</string>
+      <string>/Users/mac/stuse/lark_ws_agent.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/mac/stuse</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/mac/stuse/logs/larkws.out.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/mac/stuse/logs/larkws.err.log</string>
+  </dict>
+</plist>
