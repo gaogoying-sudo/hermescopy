@@ -48,7 +48,8 @@ cd ~/Projects/hermescopy
 
 ### 自动备份（已配置）
 
-每周一早上 9 点自动备份（通过 Hermes cronjob）
+- **每晚 12:00** 自动备份（通过 Hermes cronjob）
+- **开机兜底**：如果前一天没跑，开机后自动补跑（通过 Launchd）
 
 ---
 

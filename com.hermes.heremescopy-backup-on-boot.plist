@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.hermes.heremescopy-backup-on-boot</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>
+LAST_BACKUP=$(cat ~/.hermes/hermescopy-last-backup 2>/dev/null || echo "0")
+TODAY=$(date +%Y%m%d)
+if [ "$LAST_BACKUP" != "$TODAY" ]; then
+    cd ~/Projects/hermescopy && echo "y" | ./hermescopy-backup.sh &gt; /tmp/hermescopy-backup.log 2&gt;&amp;1
+    echo "$TODAY" &gt; ~/.hermes/hermescopy-last-backup
+fi
+        </string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <false/>
+    <key>StandardOutPath</key>
+    <string>/tmp/hermescopy-backup-on-boot.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/hermescopy-backup-on-boot.log</string>
+</dict>
+</plist>

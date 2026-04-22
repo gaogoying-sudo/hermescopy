@@ -299,10 +299,16 @@ read -p "确认提交？(y/n) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     git commit -m "backup: $TIMESTAMP - 完整灵魂备份"
-    git push origin main 2>/dev/null || git push origin master 2>/dev/null || echo "⚠️ 推送失败，请手动 push 或确认 GitHub 仓库已创建"
+    git push origin main 2>/dev/null || git push origin master 2>/dev/null || {
+        # 尝试修复 git URL 污染
+        sed -i '' 's|git@github.com:gaogoying-sudo -S -p .*/|https://github.com/gaogoying-sudo/|' .git/config 2>/dev/null
+        git push origin main 2>/dev/null || git push origin master 2>/dev/null || echo "⚠️ 推送失败，请手动 push"
+    }
     echo ""
     echo "✅ 备份完成！"
     echo "   仓库：https://github.com/gaogoying-sudo/hermescopy"
+    # 记录备份日期（供开机兜底脚本使用）
+    echo "$TIMESTAMP" > "$HERMES_HOME/hermescopy-last-backup"
 else
     echo "⏸️ 已取消提交（文件已准备好，可手动 git commit）"
 fi
