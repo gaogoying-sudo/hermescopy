@@ -3,7 +3,7 @@
 > 自动生成，记录所有依赖和版本，确保可重现
 
 ## 系统信息
-- **备份时间**：2026-04-23 00:00:46
+- **备份时间**：2026-04-23 09:46:03
 - **操作系统**：macOS 26.0
 - **架构**：arm64
 - **Shell**：/bin/zsh
@@ -79,12 +79,10 @@ jpeg-turbo
 ## 项目目录
 ```
 📁 AI-PM
-📁 CLM Project (main)
-📁 OpenViking (main)
-📁 PPT - HTML USE
 📁 andrej-karpathy-skills (main)
 📁 auto agent
 📁 claude-code-fork-main
+📁 CLM Project (main)
 📁 clm-tools-kw (main)
 📁 english-learning-studio (main)
 📁 evoagentx
@@ -95,6 +93,8 @@ jpeg-turbo
 📁 hermescopy (main)
 📁 mac-voice-transcriber
 📁 markitdown (main)
+📁 OpenViking (main)
+📁 PPT - HTML USE
 📁 rz
 📁 userclaw
 📁 wenbo-agent
