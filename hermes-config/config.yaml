@@ -1,5 +1,5 @@
 model:
-  default: glm-5
+  default: qwen3.6-plus
   provider: alibaba
   base_url: https://coding.dashscope.aliyuncs.com/v1
 providers: {}
@@ -313,36 +313,7 @@ platform_toolsets:
 code_execution:
   timeout: 300
   max_tool_calls: 50
-
-# ── Fallback Model ────────────────────────────────────────────────────
-# Automatic provider failover when primary is unavailable.
-# Uncomment and configure to enable. Triggers on rate limits (429),
-# overload (529), service errors (503), or connection failures.
-#
-# Supported providers:
-#   openrouter   (OPENROUTER_API_KEY: "<YOUR_KEY_HERE>"
-#   openai-codex (OAuth — hermes auth) — OpenAI Codex
-#   nous         (OAuth — hermes auth) — Nous Portal
-#   zai          (ZAI_API_KEY: "<YOUR_KEY_HERE>"
-#   kimi-coding  (KIMI_API_KEY: "<YOUR_KEY_HERE>"
-#   minimax      (MINIMAX_API_KEY: "<YOUR_KEY_HERE>"
-#   minimax-cn   (MINIMAX_CN_API_KEY: "<YOUR_KEY_HERE>"
-#
-# For custom OpenAI-compatible endpoints, add base_url and api_key: "<YOUR_KEY_HERE>"
-#
-# fallback_model:
-#   provider: openrouter
-#   model: anthropic/claude-sonnet-4
-#
-# ── Smart Model Routing ────────────────────────────────────────────────
-# Optional cheap-vs-strong routing for simple turns.
-# Keeps the primary model for complex work, but can route short/simple
-# messages to a cheaper model across providers.
-#
-# smart_model_routing:
-#   enabled: true
-#   max_simple_chars: 160
-#   max_simple_words: 28
-#   cheap_model:
-#     provider: openrouter
-#     model: google/gemini-2.5-flash
+fallback_model:
+  provider: alibaba
+  model: glm-5
+  base_url: https://coding.dashscope.aliyuncs.com/v1

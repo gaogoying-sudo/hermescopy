@@ -18,15 +18,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 4
+        "completed": 5
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-18T16:11:35.469408+08:00",
-      "next_run_at": "2026-04-24T09:00:00+08:00",
-      "last_run_at": "2026-04-23T09:00:36.496963+08:00",
+      "next_run_at": "2026-04-25T09:00:00+08:00",
+      "last_run_at": "2026-04-24T09:59:56.628022+08:00",
       "last_status": "ok",
       "last_error": null,
       "deliver": "local",
@@ -90,14 +90,78 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-22T21:14:58.359674+08:00",
-      "next_run_at": "2026-04-24T00:00:00+08:00",
+      "next_run_at": "2026-04-25T00:00:00+08:00",
       "last_run_at": "2026-04-23T00:01:00.869349+08:00",
       "last_status": "ok",
       "last_error": null,
       "deliver": "origin",
       "origin": null,
       "last_delivery_error": "no delivery target resolved for deliver=origin"
+    },
+    {
+      "id": "b0ead31bd006",
+      "name": "gateway-health-monitor",
+      "prompt": "Run the Gateway health check script to monitor and auto-recover Hermes Gateway.\n\nExecute: /Users/mac/.hermes/hermes-agent/venv/bin/python3 /Users/mac/.hermes/scripts/gateway-health-check.py\n\nIf the script reports any issues or restarts the Gateway, summarize what happened.\nIf everything is healthy, just report \"Gateway \u5065\u5eb7\u68c0\u67e5\u901a\u8fc7 \u2705\".",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/5 * * * *",
+        "display": "*/5 * * * *"
+      },
+      "schedule_display": "*/5 * * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-04-23T18:39:21.553222+08:00",
+      "next_run_at": "2026-04-24T14:45:00+08:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "deliver": "local",
+      "origin": null
+    },
+    {
+      "id": "f86ec17332dc",
+      "name": "Agent \u6bcf\u65e5\u5065\u5eb7\u68c0\u67e5",
+      "prompt": "\u8fd0\u884c Hermes Agent \u5065\u5eb7\u68c0\u67e5\u811a\u672c\u3002\u6267\u884c\u4ee5\u4e0b\u547d\u4ee4\u5e76\u62a5\u544a\u7ed3\u679c\uff1a\n\n```\npython3 ~/.hermes/scripts/health_check.py\n```\n\n\u5982\u679c\u62a5\u544a\u663e\u793a\u6709\u5f02\u5e38\uff08overall_status \u4e0d\u662f ok\uff09\uff0c\u8bf7\u5c06\u5f02\u5e38\u60c5\u51b5\u6c47\u603b\u540e\u544a\u77e5\u7528\u6237\u3002\u5982\u679c\u4e00\u5207\u6b63\u5e38\uff0c\u53ea\u9700\u786e\u8ba4\u4f53\u68c0\u5b8c\u6210\u5373\u53ef\u3002",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "display": "0 3 * * *"
+      },
+      "schedule_display": "0 3 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-04-24T14:35:02.293408+08:00",
+      "next_run_at": "2026-04-25T03:00:00+08:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "deliver": "origin",
+      "origin": null
     }
   ],
-  "updated_at": "2026-04-23T09:00:36.497641+08:00"
+  "updated_at": "2026-04-24T14:40:42.977193+08:00"
 }

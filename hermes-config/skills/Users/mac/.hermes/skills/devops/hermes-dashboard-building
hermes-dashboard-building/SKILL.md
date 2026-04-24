@@ -694,6 +694,142 @@ for chat_id, msgs in chat_groups.items():
 
 **Note:** Gateway logs only contain message text and response metadata, NOT the full agent response content. Feishu conversations in the dashboard will show `[Response: 436 chars, 1 API calls, 17.4s]` as the assistant message, not the actual response text.
 
+### Adding a New Feature Page (Backend + Frontend)
+
+**Pattern:** Adding any new page to the dashboard requires coordinated changes to both `server.py` and `index.html`.
+
+**Step 1: Backend API (server.py)**
+
+1. Add route(s) in `do_GET` method:
+```python
+elif path == "/api/projects":
+    self._handle_projects()
+elif path.startswith("/api/projects/"):
+    project_name = path.split("/")[-1]
+    self._handle_project_detail(project_name)
+```
+
+2. Add handler methods before `log_message`:
+```python
+def _handle_projects(self):
+    projects_dir = Path.home() / "Projects"
+    projects = [_scan_project(d) for d in projects_dir.iterdir() if d.is_dir() and not d.name.startswith('.')]
+    self._send_json({"projects": projects})
+
+def _handle_project_detail(self, project_name):
+    # Return detailed info for one project
+    ...
+```
+
+3. Add module-level helper functions before the class definition.
+
+4. Validate: `python3 -c "import ast; ast.parse(open('server.py').read())"`
+
+**Step 2: Frontend Page (index.html)**
+
+1. Add sidebar navigation link:
+```html
+<a href="#" onclick="showPage('projects')" id="nav-projects" class="sidebar-link ...">📁 项目</a>
+```
+
+2. Add page `<div>` before the next page:
+```html
+<div id="page-projects" class="page p-6 fade-in hidden">
+  <!-- Page content here -->
+</div>
+```
+
+3. Add case to `showPage` switch:
+```javascript
+case 'projects': loadProjects(); break;
+```
+
+4. Add JavaScript functions before `// ===== Utils =====`:
+```javascript
+async function loadProjects() { ... }
+function renderProjectsList() { ... }
+async function openProjectDetail(name) { ... }
+```
+
+5. Validate HTML tags are closed (count opening vs closing tags).
+
+**Step 3: Test**
+- Start server: `python3 server.py`
+- Test API: `curl -s http://127.0.0.1:9863/api/projects | python3 -m json.tool`
+- Open browser: `http://127.0.0.1:9863`
+
+### Projects Management Page (v2 Feature)
+
+**What it does:** Scans `~/Projects/` directory, extracts governance metadata (TASK_BOARD, progress.md, README.md, AGENTS.md, GOVERNANCE.md), displays as cards with detail views.
+
+**Backend pattern for scanning projects:**
+```python
+def _scan_project(project_dir):
+    """Quick scan: governance files + task counts + git info"""
+    info = {"name": project_dir.name, "score": 0, ...}
+    
+    # Find TASK_BOARD.md (skip node_modules/venv)
+    for f in project_dir.rglob("TASK_BOARD.md"):
+        if 'node_modules' not in str(f) and 'venv' not in str(f):
+            content = f.read_text()
+            info["has_task_board"] = True
+            # Parse task statuses from markdown table rows
+            info["todo_count"] = len(re.findall(r'TODO|待开始|待执行', content, re.IGNORECASE))
+            info["in_progress_count"] = len(re.findall(r'进行中|DOING', content, re.IGNORECASE))
+            info["done_count"] = len(re.findall(r'Done|✅|completed', content, re.IGNORECASE))
+            break
+    
+    # Similar for progress.md, README.md, AGENTS.md, GOVERNANCE.md
+    
+    # Git last commit
+    if (project_dir / ".git").exists():
+        result = subprocess.run(["git", "-C", str(project_dir), "log", "-1", "--format=%ci"],
+                                capture_output=True, text=True, timeout=5)
+        info["last_commit"] = result.stdout.strip()[:19]
+    
+    info["score"] = sum([info["has_task_board"], info["has_progress"], info["has_readme"], ...])
+    return info
+```
+
+**Detail API returns structured data:**
+```python
+def _get_project_detail(project_dir):
+    return {
+        "name": project_dir.name,
+        "path": str(project_dir),
+        "task_board": {"content": "...", "raw_tasks": [{"id": "T001", "task": "...", "status": "✅ Done"}]},
+        "progress": {"content": "..."},
+        "readme": {"content": "..."},
+        "requirements": [{"name": "WORK_PLAN.md", "path": "...", "preview": "..."}],
+        "issues": ["阻塞问题1", ...],
+    }
+```
+
+**Frontend pattern for list + detail views:**
+```javascript
+// List view: cards sorted by governance score
+// Detail view: 4 summary cards + 4 tabs (TODO / Progress / Requirements / Issues)
+// Tab switching: showProjectTab(tabId) toggles .tab-content and .tab-btn.active
+
+async function openProjectDetail(projectName) {
+    const detail = await apiGet('/projects/' + encodeURIComponent(projectName));
+    // Switch from list view to detail view
+    document.getElementById('projects-list-view').classList.add('hidden');
+    document.getElementById('projects-detail-view').classList.remove('hidden');
+    // Populate all sections
+}
+
+function backToProjectList() {
+    document.getElementById('projects-list-view').classList.remove('hidden');
+    document.getElementById('projects-detail-view').classList.add('hidden');
+}
+```
+
+**Important: Error handling in UI**
+- Never silently `console.error` — always show errors in the UI
+- `loadConversations` catch block should render error message in the sidebar
+- `switchConversation` catch should show red error panel in chat messages area
+
 ### macOS Auto-Start (LaunchAgent)
 
 ### LaunchAgent plist (`~/Library/LaunchAgents/com.hermes.dashboard.plist`)

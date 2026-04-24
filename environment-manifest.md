@@ -3,7 +3,7 @@
 > 自动生成，记录所有依赖和版本，确保可重现
 
 ## 系统信息
-- **备份时间**：2026-04-23 09:46:03
+- **备份时间**：2026-04-24 14:43:14
 - **操作系统**：macOS 26.0
 - **架构**：arm64
 - **Shell**：/bin/zsh
@@ -108,6 +108,7 @@ jpeg-turbo
 
 ## 自启动服务 (Launchd)
 ```
+- ai.hermes.gateway-monitor
 - ai.hermes.gateway
 - ai.openclaw.agent-monitor-server
 - ai.openclaw.cfbot

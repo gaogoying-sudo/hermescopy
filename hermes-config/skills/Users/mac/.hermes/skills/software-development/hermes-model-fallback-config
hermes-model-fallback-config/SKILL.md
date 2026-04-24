@@ -131,6 +131,26 @@ smart_model_routing:
     model: google/gemini-2.5-flash
 ```
 
+## Same-Provider Fallback (Subscription Package)
+
+When using cloud subscriptions that include multiple models with separate quotas (common in China: 阿里百炼云, 智谱 AI, etc.), configure fallback to another model in the same package:
+
+```yaml
+model:
+  default: qwen3.5-plus
+  provider: alibaba
+  base_url: https://coding.dashscope.aliyuncs.com/v1
+
+fallback_model:
+  provider: alibaba          # Same provider
+  model: glm-5               # Different model in same subscription
+  base_url: https://coding.dashscope.aliyuncs.com/v1
+```
+
+**Why this works:** Subscription packages often have per-model quotas. When one model's quota is exhausted (429 error), the API key still works for other models in the package.
+
+**Common confusion:** Users may ask for "auto-switch" thinking it's about different clouds, but actually need same-provider fallback. Always clarify: same API key = same provider.
+
 ## Pitfalls
 
 1. **Session doesn't auto-reload**: Config changes don't apply to the running session. User must restart Hermes.
@@ -151,6 +171,11 @@ smart_model_routing:
 7. **API error handling**: On HTTP 400/401 errors, STOP retrying and report immediately. Don't waste user quota on known-bad configs.
 
 8. **User preference for simplicity**: Some users prefer single stable model over complex fallback chains. Ask before adding fallback/smart_routing complexity.
+
+9. **Clarify the fallback scenario first**: When users ask about "auto-switch" or "quota exhausted", clarify:
+   - Same provider, different models (subscription package with multiple models)?
+   - Different providers entirely (multi-cloud redundancy)?
+   - Users with Chinese cloud subscriptions (百炼云, 智谱) often mean the first scenario but may not explain clearly. Ask "同一套餐内切换" vs "不同云服务商切换" to avoid misconfiguration.
 
 ## Related Files
 

@@ -1,9 +1,10 @@
 # 自启动服务清单
 
-> 备份时间：2026-04-23 09:46:03
+> 备份时间：2026-04-24 14:43:14
 
 ## Launchd 服务
 
+- `ai.hermes.gateway-monitor` → unknown
 - `ai.hermes.gateway` → unknown
 - `ai.openclaw.agent-monitor-server` → unknown
 - `ai.openclaw.cfbot` → unknown
