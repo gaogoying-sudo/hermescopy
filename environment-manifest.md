@@ -3,7 +3,7 @@
 > 自动生成，记录所有依赖和版本，确保可重现
 
 ## 系统信息
-- **备份时间**：2026-04-24 14:43:14
+- **备份时间**：2026-04-27 00:20:12
 - **操作系统**：macOS 26.0
 - **架构**：arm64
 - **Shell**：/bin/zsh
@@ -30,7 +30,7 @@ pandas                  2.3.3
 
 ## CLI 工具
 ```
-hermes: Hermes Agent v0.8.0 (2026.4.8)
+hermes: Hermes Agent v0.11.0 (2026.4.23)
 codex: codex-cli 0.122.0
 claude: 2.1.107 (Claude Code)
 git: git version 2.50.1 (Apple Git-155)
@@ -79,10 +79,12 @@ jpeg-turbo
 ## 项目目录
 ```
 📁 AI-PM
+📁 CLM Project (main)
+📁 OpenViking (main)
+📁 PPT - HTML USE
 📁 andrej-karpathy-skills (main)
 📁 auto agent
 📁 claude-code-fork-main
-📁 CLM Project (main)
 📁 clm-tools-kw (main)
 📁 english-learning-studio (main)
 📁 evoagentx
@@ -93,8 +95,7 @@ jpeg-turbo
 📁 hermescopy (main)
 📁 mac-voice-transcriber
 📁 markitdown (main)
-📁 OpenViking (main)
-📁 PPT - HTML USE
+📁 personal work bot
 📁 rz
 📁 userclaw
 📁 wenbo-agent

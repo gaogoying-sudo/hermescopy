@@ -190,6 +190,36 @@ kill -9 <PID>
 hermes
 ```
 
+### 模式 6: TUI 无法启动 (no TTY)
+
+**症状：**
+- 执行 `hermes --tui` 报错 `hermes-tui: no TTY`
+- 在 PTY/远程/无头环境中 TUI 无法交互
+
+**原因：**
+- TUI 需要真实终端 (TTY)，PTY 模式不满足检测条件
+- `hermes --tui` 会检测 `isatty()` 检查，PTY 返回 false
+
+**解决：**
+```bash
+# 方案 1: 启动 Dashboard（推荐，嵌入 TUI 模式）
+hermes dashboard --tui --no-open
+# 浏览器打开 http://127.0.0.1:9119/ 即可使用 Chat 标签页中的 TUI
+
+# 方案 2: 使用命令行 chat 模式（无需 TUI）
+hermes chat
+
+# 方案 3: 在本地物理终端直接运行
+hermes --tui  # 仅在本机终端可用
+```
+
+**验证 Dashboard 启动：**
+```bash
+curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:9119/
+# 返回 200 表示 Dashboard 已就绪
+lsof -i :9119  # 确认端口监听
+```
+
 ## 快速诊断脚本
 
 ```bash

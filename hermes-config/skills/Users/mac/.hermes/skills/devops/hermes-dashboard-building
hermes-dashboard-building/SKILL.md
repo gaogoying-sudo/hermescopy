@@ -830,6 +830,36 @@ function backToProjectList() {
 - `loadConversations` catch block should render error message in the sidebar
 - `switchConversation` catch should show red error panel in chat messages area
 
+### Health Check Script + Cronjob Pattern
+
+**Health check script** (`~/.hermes/scripts/health_check.py`): A reusable Python script that checks Agent health and outputs both JSON and markdown reports.
+
+```python
+# Checks: Memory usage, Gateway/Dashboard processes, disk, sessions, cronjobs, skills
+# Output: ~/Projects/hermes-dashboard/health/health-YYYY-MM-DD.json + .md
+# Run: python3 ~/.hermes/scripts/health_check.py
+```
+
+**Cronjob pattern** (daily at 3:00 AM):
+```
+cronjob action=create name="Agent 每日健康检查" schedule="0 3 * * *" \
+  deliver=origin prompt="python3 ~/.hermes/scripts/health_check.py"
+```
+
+**Dashboard API pattern** for health data:
+```python
+# GET /api/health — returns today's health report (runs check on demand if missing)
+# GET /api/health/history — returns past 7 days of health data
+```
+
+### hermescopy Archival Pitfall
+
+**Bug:** The `hermescopy-backup.sh` script mangles skill paths that contain newlines or special characters in the `SKILL.md` frontmatter. Symptoms: git commit shows paths like `hermes-config/skills/Users/mac/.hermes/skills/devops/agent-performance-monitoring\nagent-performance-monitoring/SKILL.md` instead of the correct relative path.
+
+**Root cause:** The backup script copies the full path to `~/.hermes/skills/` directory, and if a skill's `name:` field in frontmatter has trailing whitespace or newlines, it corrupts the path during the `git add` step.
+
+**Workaround:** After backup, check `git status --short` for any paths containing `\n` or `\\n`. If found, the backup still works (files are staged correctly), but commit message should note the issue. Long-term fix: update `hermescopy-backup.sh` to copy skills by relative path (`devops/foo/SKILL.md`) instead of absolute path.
+
 ### macOS Auto-Start (LaunchAgent)
 
 ### LaunchAgent plist (`~/Library/LaunchAgents/com.hermes.dashboard.plist`)
