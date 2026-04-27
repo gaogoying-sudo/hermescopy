@@ -18,17 +18,17 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 7
+        "completed": 8
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-18T16:11:35.469408+08:00",
-      "next_run_at": "2026-04-27T09:00:00+08:00",
-      "last_run_at": "2026-04-26T09:07:56.386839+08:00",
-      "last_status": "error",
-      "last_error": "cannot import name 'discover_builtin_tools' from 'tools.registry' (/Users/mac/.hermes/hermes-agent/tools/registry.py)",
+      "next_run_at": "2026-04-28T09:00:00+08:00",
+      "last_run_at": "2026-04-27T09:25:36.558625+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "deliver": "local",
       "origin": null,
       "last_delivery_error": null
@@ -83,20 +83,20 @@
       "schedule_display": "0 0 * * *",
       "repeat": {
         "times": null,
-        "completed": 3
+        "completed": 4
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-22T21:14:58.359674+08:00",
-      "next_run_at": "2026-04-28T00:00:00+08:00",
-      "last_run_at": "2026-04-26T00:04:37.779932+08:00",
-      "last_status": "error",
-      "last_error": "cannot import name 'discover_builtin_tools' from 'tools.registry' (/Users/mac/.hermes/hermes-agent/tools/registry.py)",
+      "next_run_at": "2026-04-29T00:00:00+08:00",
+      "last_run_at": "2026-04-27T01:01:19.296872+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "deliver": "origin",
       "origin": null,
-      "last_delivery_error": null
+      "last_delivery_error": "no delivery target resolved for deliver=origin"
     },
     {
       "id": "b0ead31bd006",
@@ -116,17 +116,17 @@
       "schedule_display": "*/5 * * * *",
       "repeat": {
         "times": null,
-        "completed": 17
+        "completed": 23
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-23T18:39:21.553222+08:00",
-      "next_run_at": "2026-04-27T00:05:00+08:00",
-      "last_run_at": "2026-04-26T16:10:12.196255+08:00",
-      "last_status": "error",
-      "last_error": "cannot import name 'discover_builtin_tools' from 'tools.registry' (/Users/mac/.hermes/hermes-agent/tools/registry.py)",
+      "next_run_at": "2026-04-28T00:10:00+08:00",
+      "last_run_at": "2026-04-27T15:56:02.253232+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "deliver": "local",
       "origin": null,
       "last_delivery_error": null
@@ -149,21 +149,21 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 2
+        "completed": 3
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-24T14:35:02.293408+08:00",
-      "next_run_at": "2026-04-27T03:00:00+08:00",
-      "last_run_at": "2026-04-26T03:04:01.222229+08:00",
-      "last_status": "error",
-      "last_error": "cannot import name 'discover_builtin_tools' from 'tools.registry' (/Users/mac/.hermes/hermes-agent/tools/registry.py)",
+      "next_run_at": "2026-04-28T03:00:00+08:00",
+      "last_run_at": "2026-04-27T03:11:45.561884+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "deliver": "origin",
       "origin": null,
-      "last_delivery_error": null
+      "last_delivery_error": "no delivery target resolved for deliver=origin"
     }
   ],
-  "updated_at": "2026-04-27T00:04:26.626289+08:00"
+  "updated_at": "2026-04-28T00:09:29.708985+08:00"
 }
