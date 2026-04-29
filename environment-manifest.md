@@ -3,7 +3,7 @@
 > 自动生成，记录所有依赖和版本，确保可重现
 
 ## 系统信息
-- **备份时间**：2026-04-29 00:22:54
+- **备份时间**：2026-04-30 00:04:26
 - **操作系统**：macOS 26.0
 - **架构**：arm64
 - **Shell**：/bin/zsh
@@ -100,6 +100,7 @@ jpeg-turbo
 📁 userclaw
 📁 wenbo-agent
 📁 xiaomiao-cert-knowledge (main)
+📁 zhiku-agent
 ```
 
 ## Cronjob 定时任务

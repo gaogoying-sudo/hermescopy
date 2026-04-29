@@ -181,14 +181,14 @@ auxiliary:
     api_key: "<YOUR_KEY_HERE>"
     timeout: 30
     extra_body: {}
-  flush_memories:
+  title_generation:
     provider: auto
     model: ''
     base_url: ''
     api_key: "<YOUR_KEY_HERE>"
     timeout: 30
     extra_body: {}
-  title_generation:
+  flush_memories:
     provider: auto
     model: ''
     base_url: ''
@@ -288,6 +288,7 @@ delegation:
   max_concurrent_children: 3
   max_spawn_depth: 1
   orchestrator_enabled: true
+  subagent_auto_approve: false
   default_toolsets:
   - terminal
   - file
@@ -323,9 +324,12 @@ approvals:
   cron_mode: deny
 command_allowlist:
 - overwrite system config
-- script execution via -e/-c flag
 - find -delete
+- script execution via -e/-c flag
+- SQL DROP
+- delete in root path
 - SQL DELETE without WHERE
+- script execution via heredoc
 quick_commands: {}
 hooks: {}
 hooks_auto_accept: false
@@ -410,3 +414,4 @@ fallback_model:
   provider: alibaba
   model: glm-5
   base_url: https://coding.dashscope.aliyuncs.com/v1
+  # 多Key轮换后仍429才触发此fallback
