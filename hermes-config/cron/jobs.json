@@ -18,17 +18,17 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 14
+        "completed": 15
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-18T16:11:35.469408+08:00",
-      "next_run_at": "2026-05-05T09:00:00+08:00",
-      "last_run_at": "2026-05-03T10:01:21.947882+08:00",
+      "next_run_at": "2026-05-06T09:00:00+08:00",
+      "last_run_at": "2026-05-05T09:27:39.546741+08:00",
       "last_status": "error",
-      "last_error": "TimeoutError: Cron job '\u6bcf\u65e5\u5065\u5eb7\u68c0\u67e5' idle for 969s (limit 600s) \u2014 last activity: receiving stream response",
+      "last_error": "TimeoutError: Cron job '\u6bcf\u65e5\u5065\u5eb7\u68c0\u67e5' idle for 994s (limit 600s) \u2014 last activity: waiting for stream response (91s, no chunks yet)",
       "deliver": "local",
       "origin": null,
       "last_delivery_error": null
@@ -84,17 +84,17 @@
       "schedule_display": "0 0 * * *",
       "repeat": {
         "times": null,
-        "completed": 11
+        "completed": 12
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-22T21:14:58.359674+08:00",
-      "next_run_at": "2026-05-06T00:00:00+08:00",
-      "last_run_at": "2026-05-04T00:47:55.235048+08:00",
-      "last_status": "error",
-      "last_error": "TimeoutError: Cron job 'hermescopy-auto-backup' idle for 1016s (limit 600s) \u2014 last activity: receiving stream response",
+      "next_run_at": "2026-05-07T00:00:00+08:00",
+      "last_run_at": "2026-05-05T01:39:31.776496+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "deliver": "origin",
       "origin": null,
       "last_delivery_error": "no delivery target resolved for deliver=origin"
@@ -124,7 +124,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-23T18:39:21.553222+08:00",
-      "next_run_at": "2026-05-05T00:35:00+08:00",
+      "next_run_at": "2026-05-06T00:30:00+08:00",
       "last_run_at": "2026-05-02T13:51:42.543994+08:00",
       "last_status": "ok",
       "last_error": null,
@@ -150,21 +150,21 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 9
+        "completed": 10
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-24T14:35:02.293408+08:00",
-      "next_run_at": "2026-05-05T03:00:00+08:00",
-      "last_run_at": "2026-05-04T10:25:13.855552+08:00",
+      "next_run_at": "2026-05-06T03:00:00+08:00",
+      "last_run_at": "2026-05-05T03:34:45.105720+08:00",
       "last_status": "error",
-      "last_error": "TimeoutError: Cron job 'Agent \u6bcf\u65e5\u5065\u5eb7\u68c0\u67e5' idle for 731s (limit 600s) \u2014 last activity: stale stream detected after 961s, reconnecting",
+      "last_error": "TimeoutError: Cron job 'Agent \u6bcf\u65e5\u5065\u5eb7\u68c0\u67e5' idle for 931s (limit 600s) \u2014 last activity: receiving stream response",
       "deliver": "origin",
       "origin": null,
       "last_delivery_error": "no delivery target resolved for deliver=origin"
     }
   ],
-  "updated_at": "2026-05-05T00:31:25.660657+08:00"
+  "updated_at": "2026-05-06T00:25:45.093117+08:00"
 }
