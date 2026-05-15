@@ -18,15 +18,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 21
+        "completed": 22
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-18T16:11:35.469408+08:00",
-      "next_run_at": "2026-05-15T09:00:00+08:00",
-      "last_run_at": "2026-05-14T10:52:18.233879+08:00",
+      "next_run_at": "2026-05-16T09:00:00+08:00",
+      "last_run_at": "2026-05-15T09:17:39.979773+08:00",
       "last_status": "ok",
       "last_error": null,
       "deliver": "local",
@@ -84,17 +84,17 @@
       "schedule_display": "0 0 * * *",
       "repeat": {
         "times": null,
-        "completed": 17
+        "completed": 18
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-22T21:14:58.359674+08:00",
-      "next_run_at": "2026-05-16T00:00:00+08:00",
-      "last_run_at": "2026-05-13T00:56:47.866020+08:00",
-      "last_status": "error",
-      "last_error": "TimeoutError: Cron job 'hermescopy-auto-backup' idle for 1049s (limit 600s) \u2014 last activity: executing tool: terminal",
+      "next_run_at": "2026-05-17T00:00:00+08:00",
+      "last_run_at": "2026-05-15T02:46:23.706607+08:00",
+      "last_status": "ok",
+      "last_error": null,
       "deliver": "origin",
       "origin": null,
       "last_delivery_error": "no delivery target resolved for deliver=origin"
@@ -124,7 +124,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-23T18:39:21.553222+08:00",
-      "next_run_at": "2026-05-15T01:00:00+08:00",
+      "next_run_at": "2026-05-16T00:35:00+08:00",
       "last_run_at": "2026-05-02T13:51:42.543994+08:00",
       "last_status": "ok",
       "last_error": null,
@@ -150,15 +150,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 16
+        "completed": 17
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-04-24T14:35:02.293408+08:00",
-      "next_run_at": "2026-05-15T03:00:00+08:00",
-      "last_run_at": "2026-05-13T04:12:27.887250+08:00",
+      "next_run_at": "2026-05-16T03:00:00+08:00",
+      "last_run_at": "2026-05-15T03:17:47.351626+08:00",
       "last_status": "ok",
       "last_error": null,
       "deliver": "origin",
@@ -166,5 +166,5 @@
       "last_delivery_error": "no delivery target resolved for deliver=origin"
     }
   ],
-  "updated_at": "2026-05-15T00:58:31.931531+08:00"
+  "updated_at": "2026-05-16T00:32:05.027865+08:00"
 }
